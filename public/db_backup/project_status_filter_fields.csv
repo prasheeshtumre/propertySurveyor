@@ -1,0 +1,21 @@
+id, type, tower_type, construction_stage_id, status_id, field_type, field_title, model, data_attr_type, class_name, name_attribute, level, created_at, updated_at
+1,project,1,0,1,date,Expected Date of Start,,,,project_expected_date_of_start,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+2,project,1,0,1,date,Expected Date of Completion,,,,project_expected_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+5,tower,1,0,1,date,Expected Date of Start,,,,tower_expected_date_of_start,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+6,tower,1,0,1,date,Expected Date of Completion,,,,tower_expected_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+7,tower,1,0,2,dropdown,Stage of the Construction,ConstructionStage,tower,construction-stages,construction_stage,3,2023-06-13 23:20:24,2023-06-13 23:20:24
+8,project,1,0,3,date,Date of Completion,,,,project_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+9,tower,1,0,3,date,Date of Completion,,,,tower_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+11,tower,1,2,0,dropdown,Select the Floors,FloorRangesPerTower,,,floor_range,4,2023-06-13 23:20:24,2023-06-13 23:20:24
+12,project,2,0,1,date,Expected Date of Start,,,,project_expected_date_of_start,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+13,project,2,0,1,date,Expected Date of Completion,,,,project_expected_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+14,project,2,0,2,dropdown,Units,Tower,tower,psdd-options,tower,1,2023-06-13 23:20:24,2023-06-13 23:20:24
+15,tower,2,0,1,date,Expected Date of Start,,,,tower_expected_date_of_start,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+16,tower,2,0,1,date,Expected Date of Completion,,,,tower_expected_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+17,tower,2,0,2,dropdown,Stage of the Construction,ConstructionStage,tower,construction-stages,construction_stage,3,2023-06-13 23:20:24,2023-06-13 23:20:24
+18,project,2,0,3,date,Date of Completion,,,,project_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+19,tower,2,0,3,date,Date of Completion,,,,tower_date_of_completion,0,2023-06-13 23:20:24,2023-06-13 23:20:24
+20,tower,2,0,0,dropdown,Status of the Unit,ProjectStatus,tower,,tower_status,2,2023-06-13 23:20:24,2023-06-13 23:20:24
+21,tower,2,2,0,dropdown,Select the Floors,FloorRangesPerTower,,,floor_range,4,2023-06-13 23:20:24,2023-06-13 23:20:24
+10,tower,1,0,0,dropdown,Status of the Tower,ProjectStatus,tower,tower-status-dd,tower_status,2,2023-06-13 23:20:24,2023-06-13 23:20:24
+3,project,1,0,2,dropdown,Tower,Tower,tower,psdd-options towers-dd,tower,1,2023-06-13 23:20:24,2023-06-13 23:20:24

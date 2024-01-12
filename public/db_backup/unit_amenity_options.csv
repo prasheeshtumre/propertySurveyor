@@ -1,0 +1,158 @@
+id, name, parent_id, image_name, icon_path, status, created_at, updated_at
+1,Private,1,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+2,Shared,1,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+3,Not Available,1,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+4,Available,2,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+5,Not Available,2,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+6,Available,3,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+7,Not Available,3,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+8,Available,4,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+9,Not Available,4,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+10,Available,5,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+11,Not Available,5,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+12,Available,6,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+13,Not Available,6,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+14,Available,7,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+15,Not Available,7,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+16,Fire Extinguisher,8,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+17,Fire Sensors,8,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+18,Spinklers,8,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+19,Fire Hose,8,NULL,"",1,2023-07-26 11:58:09,2023-07-26 11:58:09
+20,Available,9,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+21,Not Available,9,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+22,Passenger Lifts,9,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+23,Ready to move,10,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+24,Under Construction,10,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+25,0-1 Years,11,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+26,1-5 Years,11,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+27,5-10 Years,11,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+28,10+ Years,11,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+29,North,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+30,South,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+31,East,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+32,West,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+33,North-East,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+34,North-west,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+35,South-East,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+36,South-west,12,NULL,"",1,2023-07-26 12:02:55,2023-07-26 12:02:55
+37,Pooja Room,13,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+38,Study Room,13,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+39,Servant Room,13,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+40,Store Room,13,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+41,Furnished,14,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+42,Semi-Furnished,14,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+43,Un-Furnished,14,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+44,Company Lease Agreement,15,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+45,Any,15,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+46,0,16,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+47,36,16,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+48,Electricity & Water Charges Excluded,17,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+49,Price Negotiable,17,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+50,Fixed,18,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+51,Multiple of Rent,18,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+52,None,18,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+53,None,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+54,1 Month,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+55,2 Months,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+56,3 Months,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+57,4 Months,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+58,5 Months,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+59,6 Months,19,NULL,"",1,2023-07-26 12:15:21,2023-07-26 12:15:21
+60,Maintenance Staff,20,NULL,images/LayerMaintenance.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+61,Water Storage,20,NULL,images/Layer_1WaterStorage.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+62,Security/Fire Alarm,20,NULL,images/SecurityFireAlarm.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+63,Visitor Parking,20,NULL,images/Layer_VisitorParking.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+64,Feng Shui/Vaastu Compliant,20,NULL,images/Layer_FenghuiVaastuCompliant.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+65,Park,20,NULL,images/Layer_Park.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+66,Intercom Facility,20,NULL,images/Layer_IntercomFacility.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+67,Lift(s),20,NULL,images/Layer_1Lift.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+68,Close to Metro Station,21,NULL,images/Layer_1Close toMetroStation.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+69,Close to school,21,NULL,images/VectorClosetoschool.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+70,Close to Hospital,21,NULL,images/VectorClosetoHospital.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+71,Close to Market,21,NULL,images/VectorClosetoMall.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+72,Close to Railway Station,21,NULL,images/Layer_1Close to Railway Station.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+73,Close to Airport,21,NULL,images/Layer_1ClosetoAirport.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+74,Close to Mall,21,NULL,images/VectorClosetoMall.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+75,Close to Highway,21,NULL,images/Layer_1Cloeto Highway.svg,1,2023-07-26 12:21:56,2023-07-26 12:21:56
+76,All inclusive price,22,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+77,Tax and Govt Charges Excluded,22,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+78,Price Negociable,22,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+79,Monthly,23,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+80,Quarterly,23,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+81,Yearly,23,NULL,"",1,2023-07-26 12:21:56,2023-07-26 12:21:56
+82,Bare Shell Office,24,NULL,"",1,2023-07-27 13:30:47,2023-07-27 13:30:47
+83,Plugin Office,24,NULL,"",1,2023-07-27 13:30:47,2023-07-27 13:30:47
+84,Available,25,NULL,"",1,2023-07-28 14:33:56,2023-07-28 14:33:56
+85,Not Available,25,NULL,"",1,2023-07-28 14:33:56,2023-07-28 14:33:56
+86,Entrance,26,NULL,"",1,2023-07-28 14:34:54,2023-07-28 14:34:54
+87,Elevator,26,NULL,"",1,2023-07-28 14:34:54,2023-07-28 14:34:54
+88,Stairs,26,NULL,"",1,2023-07-28 14:34:54,2023-07-28 14:34:54
+89,Private Parking,27,NULL,"",1,2023-07-28 14:35:50,2023-07-28 14:35:50
+90,Public Parking,27,NULL,"",1,2023-07-28 14:35:50,2023-07-28 14:35:50
+91,Multilevel Parking,27,NULL,"",1,2023-07-28 14:35:50,2023-07-28 14:35:50
+92,Not Available,27,NULL,"",1,2023-07-28 14:35:50,2023-07-28 14:35:50
+93,Centrally Air Conditioned,28,NULL,images/Layer_1CenralAirConditioning.svg,1,2023-07-29 14:17:49,2023-07-29 14:17:49
+94,Near Bank,28,NULL,"",1,2023-07-29 14:17:49,2023-07-29 14:17:49
+95,Power Backup,28,NULL,"",1,2023-07-29 14:17:49,2023-07-29 14:17:49
+96,Reserved Parking,28,NULL,"",1,2023-07-29 14:17:49,2023-07-29 14:17:49
+97,Fitness Centre/GYMt,29,NULL,images/Layer_1FitnessCentreGYM.svg,1,2023-07-29 14:21:27,2023-07-29 14:21:27
+98,Wheel Chair Accesibility,29,NULL,images/Layer_1Multiplex1.svg,1,2023-07-29 14:21:27,2023-07-29 14:21:27
+99,DG Availability,29,NULL,"",1,2023-07-29 14:21:27,2023-07-29 14:21:27
+100,CC TV Survillence,29,NULL,"",1,2023-07-29 14:21:27,2023-07-29 14:21:27
+101,Club house/Community Center,29,NULL,images/Layer_1Watersofteningplant.svg,1,2023-07-29 14:21:27,2023-07-29 14:21:27
+102,Tennis Court(s),29,NULL,images/Layer_1TennisCourt(s).svg,1,2023-07-29 14:21:27,2023-07-29 14:21:27
+103,Swimming pool,29,NULL,images/Layer_1SwimmingPool.svg,1,2023-07-29 14:21:27,2023-07-29 14:21:27
+105,Rain Water Harvesting,30,NULL,images/Layer_1 RainWaterHarvesting.svg,1,2023-07-29 14:22:05,2023-07-29 14:22:05
+106,Bank Attached Property,30,NULL,images/Layer_1BankAttachedProperty.svg,1,2023-07-29 14:22:05,2023-07-29 14:22:05
+107,Main Road Facing,31,NULL,images/Layer_1MainRoad.svg,1,2023-07-29 14:23:14,2023-07-29 14:23:14
+108,Corner Property,31,NULL,images/Layer_1CornerProperty.svg,1,2023-07-29 14:23:14,2023-07-29 14:23:14
+125,Water softening plant,29,NULL,images/Layer_1Watersofteningplant1.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+126,Shopping Centre,29,NULL,images/Layer_1ShoppingCentre.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+127,Squash Court,29,NULL,images/Layer_1TennisCourt(s).svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+128,"Kids' Play Areas
+",29,NULL,images/Layer_1Kids'PlayAreas.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+129,"Jogging / Cycle Track
+",29,NULL,images/Layer_1JoggingCycleTrack.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+130,Attached Market,29,NULL,images/Layer_1AttachedMarket.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+131,Home Automation,29,NULL,images/Layer_1HomeAutomation.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+132,Security Personnel,29,NULL,images/Layer_1KidsPlayAreas1.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+133,Badminton Court(s),29,NULL,images/Layer_1BadmintonCourt(s).svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+134,"Conference Room
+",29,NULL,images/Layer_1ConferenceRoom.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+135,Multiplex,29,NULL,images/Layer_1Multiplex.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+136,ATM's,29,NULL,images/Layer_1ATM’s.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+137,Barbeque Area,29,NULL,images/Layer_1BarbequeArea.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+138,Double Glazed Windows,29,NULL,images/Layer_1DoubleGlazedWindows.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+139,Facilities for Disabled,29,NULL,images/Layer_1Multiplex1.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+140,Cleaning Services,29,NULL,images/Layer_1CleaningServices.svg,1,2023-07-29 14:31:15,2023-07-29 14:31:15
+141,High Ceiling Height,28,NULL,images/Layer_1HighCeilingHeight.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+142,False Ceiling Lighting,28,NULL,images/Layer_1FalseCeilingLighting.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+143,Piped-gas,28,NULL,images/Layer_1Piped-gas.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+144,Internet/wifi connectivity,28,NULL,images/Layer_1Internetwificonnectivity.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+145,Water purifier,28,NULL,images/Layer_1Waterpurifier.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+146,Recently Renovated,28,NULL,images/Layer_1RecentlyRenovated.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+147,Private Garden/Terrace,28,NULL,images/Layer_1PrivateGardenTerrace.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+148,Natural Light,28,NULL,images/Layer_1NaturalLight.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+149,Airy Rooms,28,NULL,images/Layer_1AiryRooms.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+150,Spacious Interiors,28,NULL,images/Layer_1SpaciousInteriors.svg,1,2023-07-29 14:36:24,2023-07-29 14:36:24
+151,Separate entry for servant room,30,NULL,images/Layer_1Separateentrforservantroom.svg,1,2023-07-29 14:40:25,2023-07-29 14:40:25
+152,Waste Disposal,30,NULL,images/Layer_1WasteDisposal.svg,1,2023-07-29 14:40:25,2023-07-29 14:40:25
+153,No open drainage around,30,NULL,images/Layer_1Noopendrainagearound.svg,1,2023-07-29 14:40:25,2023-07-29 14:40:25
+156,Low Density Society,30,NULL,images/Layer_1LowDensitySociety.svg,1,2023-07-29 14:40:25,2023-07-29 14:40:25
+158,Grade A Building,20,NULL,"",1,2023-07-29 15:09:54,2023-07-29 15:09:54
+159,Waste Disposal,20,NULL,images/Layer_1WasteDisposal.svg,1,2023-07-29 15:09:54,2023-07-29 15:09:54
+160,Grocery Shop,20,NULL,images/Layer_1AttachedMarket.svg,1,2023-07-29 15:13:11,2023-07-29 15:13:11
+161,Municipal corporation,32,NULL,images/Layer_1Municipalcorporation.svg,1,2023-07-29 15:50:09,2023-07-29 15:50:09
+162,Borewell/Tank,32,NULL,images/Layer_1BorwellTank.svg,1,2023-07-29 15:50:09,2023-07-29 15:50:09
+163,24*7 Water,32,NULL,images/Layer_1247Water.svg,1,2023-07-29 15:50:09,2023-07-29 15:50:09
+164,Pool,33,NULL,images/Layer_1Pool.svg,1,2023-07-29 15:51:33,2023-07-29 15:51:33
+165,Park/Garden,33,NULL,images/Layer_1ParGarden.svg,1,2023-07-29 15:51:33,2023-07-29 15:51:33
+166,Club,33,NULL,images/Layer_1Club.svg,1,2023-07-29 15:51:33,2023-07-29 15:51:33
+167,Main Road,33,NULL,images/Layer_1MainRoad.svg,1,2023-07-29 15:51:33,2023-07-29 15:51:33
+168,Others,33,NULL,images/Layer_1Otheers.svg,1,2023-07-29 15:51:33,2023-07-29 15:51:33
+169,None,34,NULL,images/Layer_1None.svg,1,2023-07-29 15:52:23,2023-07-29 15:52:23
+170,Partial,34,NULL,images/Layer_1Partial.svg,1,2023-07-29 15:52:23,2023-07-29 15:52:23
+171,Full,34,NULL,images/Layer_1Full.svg,1,2023-07-29 15:52:23,2023-07-29 15:52:23
+172,In a gated society,31,NULL,images/Layer_1In agatedsociety.svg,1,2023-07-29 15:58:51,2023-07-29 15:58:51
+174,Pet friendly,31,NULL,images/Layer_1Petfriendly.svg,1,2023-07-29 15:58:51,2023-07-29 15:58:51
+175,Wheelchair friendly,31,NULL,images/Layer_1Whelchairfriendly.svg,1,2023-07-29 15:58:51,2023-07-29 15:58:51

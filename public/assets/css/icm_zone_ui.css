@@ -1,0 +1,184 @@
+.icm-zone {
+        min-height: 150px;
+        border: 2px solid rgba(0,0,0,0.3);
+        background: white;
+        border-radius: 6px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .icm-file-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 20px;
+    }
+
+    .image-item {
+        position: relative;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: rgba(255, 255, 255, 0.8); */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        pointer-events: none; /* Added to allow hover events on the image */
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+
+    .checkmark {
+        color: #4caf50;
+        font-size: 20px;
+        display: none;
+    }
+    .icm-image{
+        border-radius: 20px;
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        position: relative;
+        display: block;
+        /* z-index: 10; */
+    }
+    p.icm-file-size {
+        position: absolute;
+        /* background-color: #fff; */
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-size: 15px;
+        opacity: 0;
+    }
+    .icm-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .image-item:hover .overlay {
+        opacity: 1;
+    }
+    .icm-success-mark, .icm-error-mark{
+        pointer-events: none;
+        opacity: 0;
+        z-index: -2;
+        position: absolute;
+        display: block;
+        bottom: -10%;
+        left: 50%;
+        margin-left: -27px;
+        margin-top: -27px;
+        transition: bottom 2s ease;
+    }
+    .icm-success-mark.active, .icm-error-mark.active {
+        opacity: 1;
+        z-index: 5;
+        bottom: 25%;
+        transition: bottom 2s ease;
+    }
+    .icm-success-mark svg, .icm-error-mark svg {
+        display: block;
+        width: 54px;
+        height: 54px;
+    }
+    .image-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .image-item:hover .icm-image img{
+        opacity: 0.8;
+        filter: blur(6px);
+    }
+
+    .image-item:hover .icm-file-size{
+        
+        opacity: 1;
+    }
+
+    .icm-progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            margin-bottom: 20px;
+    }
+
+    .icm-progress-bar {
+        width: 0;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+    }
+
+    .image-item .overlay .icm-progress {
+        width: 80%;
+        height: 24px;
+        border-radius: 20px;
+    }
+    .icm-progress-bar{
+        background-color: #94999d !important;
+    }
+    .icm-zone-label{
+        position: relative;
+        color: #9f9c9c;
+        font-family: fantasy;
+        font-size: 30px;
+        text-align: center;
+        width: 100%;
+        align-items: center;
+        min-height: 140px;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        z-index: 0;
+    }
+    button.btn.btn-danger.icm-remove-img-item {
+        position: absolute;
+        bottom: -16%;
+        border-radius: 24px;
+        opacity: 0;
+        display: none;
+    }
+    button.btn.btn-danger.icm-remove-img-item.show{
+        opacity: 1;
+        transition: opacity 1.5s ease-in-out;
+        border: 3px solid #fff;
+        display: block;
+
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .icm-success-mark.active {
+        animation:  hideSuccessMark 1s 3s ease forwards;
+    }
+
+    @keyframes hideSuccessMark {
+        to {
+            opacity: 0;
+            bottom: 100%;
+        }
+    }  

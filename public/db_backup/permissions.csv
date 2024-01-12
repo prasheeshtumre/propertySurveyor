@@ -1,0 +1,9 @@
+id, name, slug, created_at, updated_at
+2,role-list,role-list,2023-09-19 15:54:06,2023-09-19 15:54:06
+3,role-create,role-create,2023-09-19 15:54:07,2023-09-19 15:54:07
+4,role-edit,role-edit,2023-09-19 15:54:07,2023-09-19 15:54:07
+5,role-delete,role-delete,2023-09-19 15:54:07,2023-09-19 15:54:07
+6,property-list,property-list,2023-09-19 15:54:07,2023-09-19 15:54:07
+7,property-create,property-create,2023-09-19 15:54:07,2023-09-19 15:54:07
+8,property-edit,property-edit,2023-09-19 15:54:07,2023-09-19 15:54:07
+9,property-delete,property-delete,2023-09-19 15:54:07,2023-09-19 15:54:07

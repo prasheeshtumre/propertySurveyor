@@ -1,0 +1,10 @@
+id, block_tower_id, file_type, file_path, file_name, created_by, created_at, updated_at
+1,1,floor_plan,/uploads/block_towers_repository/floor_plan/,/uploads/block_towers_repository/floor_plan/654498c5c315a.pdf,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+2,1,image_files,/uploads/project_repository/image_files/,/uploads/project_repository/image_files/654498c5c6d0a.jpg,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+3,1,image_files,/uploads/project_repository/image_files/,/uploads/project_repository/image_files/654498c5c87cf.jpg,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+4,1,image_files,/uploads/project_repository/image_files/,/uploads/project_repository/image_files/654498c5c9e56.jpg,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+5,1,3dvideo,/uploads/project_repository/3dvideo/,/uploads/project_repository/3dvideo/654498c5cb1ff.mp4,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+6,1,tower_video,/uploads/project_repository/tower_video/,/uploads/project_repository/tower_video/654498c5ccc15.mp4,1,2023-11-03 12:22:53,2023-11-03 12:22:53
+7,2,floor_plan,/uploads/block_towers_repository/floor_plan/,/uploads/block_towers_repository/floor_plan/654f5840f0d7d.jpg,1,2023-11-11 16:02:32,2023-11-11 16:02:32
+8,2,image_files,/uploads/project_repository/image_files/,/uploads/project_repository/image_files/654f5840f3d85.jpg,1,2023-11-11 16:02:33,2023-11-11 16:02:33
+9,2,tower_video,/uploads/project_repository/tower_video/,/uploads/project_repository/tower_video/654f584100f33.mp4,1,2023-11-11 16:02:33,2023-11-11 16:02:33

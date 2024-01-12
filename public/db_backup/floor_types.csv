@@ -1,0 +1,15 @@
+id, name, status, sort_by, icon_path, created_at, updated_at
+1,Marble,1,1,images/Layer_1Marble.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+2,Concrete,1,1,images/Layer_1Concrete.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+3,Polished Concrete,1,1,images/Layer_1PolihedConcrete.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+4,Granite,1,1,images/Layer_1Granite.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+5,Ceramic,1,1,images/Layer_1Ceramic.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+6,Mosaic,1,1,images/Layer_1Mosaic.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+8,Stone,1,1,images/Layer_1Stone.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+9,Vinyl,1,1,images/Layer_1Vinyl.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+10,Wood,1,1,images/Layer_1Wood.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+11,Vitrified,1,1,images/GroupVitrified.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+12,Spartex,1,1,images/GroupSpartex.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+13,IPS Finish,1,1,images/IPS Finish.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+14,Others,1,1,images/Layer_1Others.svg,2023-05-24 18:06:00,2023-05-24 18:06:00
+7,Cement,1,1,NULL,2023-05-24 18:06:00,2023-05-24 18:06:00

@@ -1,0 +1,78 @@
+ 
+
+
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  
+  body{
+      background:none;
+  }
+  
+  h4{
+     margin-top: 143px;
+  }
+  
+  .wrapper{
+      margin-top:0px;
+  }
+  
+  .mt-sm-0{
+       margin-top:0px !important;
+  }
+ .col_mm{
+     flex-direction: column;
+ }
+  
+  .btn_sm{
+      width: 100%;
+  }
+   
+  .mm_flx{
+      flex-direction:inherit;
+  }
+  
+  .mt_100{
+      margin-top:0px;
+  }
+  
+  .mm_flx{
+          flex-direction: column;
+  }
+  .mm_flx h4{ 
+       margin-top: 23px;
+ 
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+

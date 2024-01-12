@@ -1,0 +1,36 @@
+id, name, furnishing_id, input_type, icon, status, created_at, updated_at
+1,Lights,41,number,images/fur-lights.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+2,AC,41,number,images/fur-ac.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+3,Fans,41,number,images/fur-fan.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+4,TV,41,number,images/fur-tv.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+5,Beds,41,number,images/fur-beds.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+6,Wardrobe,41,checkbox,images/fur-wardrobe.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+7,Geyser,41,checkbox,images/fur-gleser.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+8,Sofa,41,checkbox,images/fur-sofa.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+9,Microwave,41,checkbox,images/fur-oven.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+10,Chimney,41,checkbox,images/fur-chemney.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+11,Curtains,41,checkbox,images/fur-curtons.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+12,Stove,41,checkbox,images/fur-stove.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+13,Water Purifier,41,checkbox,images/fur-water-puri.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+14,Modular Kitchen,41,checkbox,images/fur-kitchen.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+15,Dining Table,41,checkbox,images/fur-dyneing.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+16,Exhaust Fan,41,checkbox,images/fur-exhast.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+17,Washing Machine,41,checkbox,images/fur-washing.svg,1,2023-07-20 11:55:28,2023-07-20 11:55:28
+18,Lights,42,number,images/fur-lights.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+19,AC,42,number,images/fur-ac.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+20,Fans,42,number,images/fur-fan.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+21,TV,42,number,images/fur-tv.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+22,Beds,42,number,images/fur-beds.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+23,Wardrobe,42,checkbox,images/fur-wardrobe.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+24,Geyser,42,checkbox,images/fur-gleser.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+25,Sofa,42,checkbox,images/fur-sofa.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+26,Microwave,42,checkbox,images/fur-oven.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+27,Chimney,42,checkbox,images/fur-chemney.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+28,Curtains,42,checkbox,images/fur-curtons.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+29,Stove,42,checkbox,images/fur-stove.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+30,Water Purifier,42,checkbox,images/fur-water-puri.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+31,Modular Kitchen,42,checkbox,images/fur-kitchen.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+32,"Dining Table
+",42,checkbox,images/fur-dyneing.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+33,Exhaust Fan,42,checkbox,images/fur-exhast.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44
+34,Washing Machine,42,checkbox,images/fur-washing.svg,1,2023-07-20 11:55:44,2023-07-20 11:55:44

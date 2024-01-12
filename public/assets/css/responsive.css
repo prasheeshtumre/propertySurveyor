@@ -1,0 +1,18 @@
+@media screen and (max-width: 480px) {
+  .add-property {
+    width: 100%;
+  }
+  
+}
+.floor_no_child  {
+    /* margin: .5rem 0rem  !important; */
+}
+@media only screen and (max-width: 600px) {
+  span.remove-storey, span.remove-storey-unit { 
+    position: absolute;
+    top: 1%;
+    left: 92%;
+    width: 20px;
+    cursor: pointer;
+}
+}

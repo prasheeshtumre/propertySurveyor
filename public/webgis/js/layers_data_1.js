@@ -1,0 +1,148 @@
+
+(function (global, $) {
+
+   "use strict";
+
+
+    var obj = [
+        
+        {
+		id : "nalgoda:open_plots_shape",
+		layers : [ "nalgoda:open_plots_shape" ],
+		name : "open_plots_shape",
+                title: "Open plots",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	},{
+		id : "nalgoda:village",
+		layers : [ "nalgoda:village" ],
+		name : "village",
+                title: "Village",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["nalgoda:village_style"]
+	}/*,{
+		id : "nalgoda:building_noinfo",
+		layers : [ "nalgoda:building_noinfo" ],
+		name : "building_noinfo",
+                title: "Buildings no info",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	},{
+		id : "nalgoda:building_hasinfo",
+		layers : [ "nalgoda:building_hasinfo" ],
+		name : "building_hasinfo",
+                title: "Buildings have info",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	},{
+		id : "nalgoda:building_dispute",
+		layers : [ "nalgoda:building_dispute" ],
+		name : "building_dispute",
+                title: "Building dispute",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	}*/,{
+		id : "nalgoda:ward_boundaries",
+		layers : [ "nalgoda:ward_boundaries" ],
+		name : "ward_boundaries",
+                title: "Ward boundary",
+		visible : true,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	},{
+		id : "nalgoda:zone_boundaries",
+		layers : [ "nalgoda:zone_boundaries" ],
+		name : "zone_boundaries",
+                title: "Zone boundary",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	},{
+		id : "nalgoda:aoi",
+		layers : [ "nalgoda:aoi" ],
+		name : "aoi",
+                title: "AOI",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	}, {
+		id : "nalgoda:bridges_flyover",
+		layers : [ "nalgoda:bridges_flyover" ],
+		name : "bridges_flyover",
+                title: "Bridges flyover",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	}, {
+		id : "nalgoda:building",
+		layers : [ "nalgoda:building" ],
+		name : "building",
+                title: "Building",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+                styles : ["polygon_style"],
+	}, {
+		id : "nalgoda:bus_shelter",
+		layers : [ "nalgoda:bus_shelter" ],
+		name : "bus_shelter",
+                title: "Bus shelter",
+		visible : false,
+		tile : true,
+                serverType: 'geoserver',
+                serviceVersion: '1.1.1',
+                groupID: "nagolda_layers",
+                groupTitle: "Nagolda Layers",
+	},
+    ]
+
+
+    global.layersData = obj;
+
+})(window.GISApp, jQuery)
+
+;

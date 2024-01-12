@@ -1,0 +1,16 @@
+id, name, email, email_verified_at, password, remember_token, created_at, updated_at, username, role, mobile, status
+1,surveyor,surveyor@proper-t.com,,$2y$10$fY1u85z3JGXonWC8ogW5OueERhIlpwmS4sXvQmQnsMbiDWpjyGLki,,2023-08-22 13:06:06,2023-08-22 13:06:06,surveyor,2,,0
+2,peter,peter@proper-t.com,,$2y$10$hThWJyhqTW.v.oRAq2ivoOQbrR.2ogaAUj0vi5LltLbRmCH2x.CcC,,2023-09-06 10:11:39,2023-09-06 10:11:39,peter,2,,0
+3,admin,admin@proper-t.com,,$2y$10$1de/M.tA1GhT5.lScP.zq.Gwkw8a0bq/wTFCekJViMEUuOQb9pFeC,,2023-09-12 16:23:34,2023-09-12 16:23:34,admin,1,,0
+4,pavan,pavan@proper-t.co,,$2y$10$LOVGq09.thbaK7kVmx9d8O1/2koSIpj9mmprnxCANcYAiED866GxK,,2023-09-19 14:22:38,2023-09-19 14:22:38,,,,0
+5,kanna,kanna@propert.co,,$2y$10$YAE7unm4STjdZOase5NCr./vRyoFzn0JNZUralzWp8J4vXoWQcnv6,,2023-09-19 14:30:39,2023-09-19 14:30:39,,,,0
+7,gamora,gamora@proper-t.co,,$2y$10$6h3GFHgsM//ReD3Y993.me5o.SqnGv045a8ZbWWacsU8PHhsG3beW,,2023-09-19 14:38:10,2023-09-19 14:38:10,,,,0
+8,dilli,dilli@proper-t.co,,$2y$10$NqXm8QpGvw6papzGIT14au5ogoOysOzAR1d9X9u0OikIpthrJKgJ.,,2023-09-19 14:44:40,2023-09-19 14:44:40,,,,0
+9,moqaka,moqaka@mailinator.com,,$2y$10$cv0LjNM1yEpR6B5FzcRwieBejD1Eb5fbQClCxxOD0zgRLF/5JgCJG,,2023-09-19 14:45:55,2023-09-19 14:45:55,,,,0
+6,bruce,bruce@proper-t.co,,$2y$10$uYC/lWMfMzCKm69liz0KcucfHUVrJqdiRGtaImKfjdD4P6vQ8QmAy,,2023-09-19 14:35:41,2023-09-19 14:35:41,bruce,,,0
+10,js,js@email.com,,$2y$10$FRk.pFfWpduGanINxMUgXOCtD6ddQHNO7JjffVgAyZ4EMhjbLqX12,,2023-10-10 12:23:17,2023-10-10 12:23:17,js-surveyor,,12345678,1
+11,ram,ram@email.com,,$2y$10$7bMCQn1Urhov7kh1JuibjOyTU7iPHY/CeIAQdAY97fZ5w4Q6AOoiS,,2023-10-10 12:27:57,2023-10-10 12:27:57,ram,,3345678,1
+12,bhanu,bhanu@gg.com,,$2y$10$CaWGhwR/gzZv/BpseIoeXuhRVFVyTMJ.aMu/yAI9GEQPvSb8DpI66,,2023-10-10 12:28:55,2023-10-10 12:28:55,bhanu,,3456765434,1
+13,prasheesh,prasheesh@gg.com,,$2y$10$c4L6x2n02KBX2Hpp5v.N.e9m7zQ8v4ug6IwHwLVc//Vx83udltpRG,,2023-10-10 12:31:15,2023-10-10 12:31:15,prasheesh,,34567654345,1
+14,chaitanya,chaitanya@gg.com,,$2y$10$CGKGkFEYR6Sjm6xwLQ7PjuDFAuE2zcGA.5ngL4FT5V8uvF7iCOVie,,2023-10-10 12:33:33,2023-10-10 12:33:33,chaitanya,,3456743459,1
+15,tony,stark@in.co,,$2y$10$feivOCEOxooQJYGdDADFDeq9H4v8rHUoDpPds.gHn21UC0WfgiVtW,,2023-11-11 15:28:49,2023-11-11 15:28:49,tony,,12345678,1

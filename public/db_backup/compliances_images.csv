@@ -1,0 +1,15 @@
+id, comp_id, file_type, file_path, file_name, created_by, created_at, updated_at
+1,1,ghmc,uploads/compliances/ghmc/,654495741bc82.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+2,1,ghmc,uploads/compliances/ghmc/,654495741f7a3.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+3,1,commenc,uploads/compliances/commenc/,65449574213e1.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+4,1,rear,uploads/compliances/rear/,6544957422974.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+5,1,rear,uploads/compliances/rear/,65449574240a8.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+6,1,hmda,uploads/compliances/hmda/,6544957425609.jpg,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+7,2,ghmc,uploads/compliances/ghmc/,654f5600cc7f6.pdf,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+8,2,commenc,uploads/compliances/commenc/,654f5600ce649.pdf,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+9,2,rear,uploads/compliances/rear/,654f5600cfede.pdf,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+10,2,hmda,uploads/compliances/hmda/,654f5600d0fd7.pdf,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+11,2,legal,uploads/compliances/legal/,654f5600d1db7.pdf,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+12,3,ghmc,uploads/compliances/ghmc/,6554862ecac2c.pdf,1,2023-11-15 14:19:50,2023-11-15 14:19:50
+13,3,commenc,uploads/compliances/commenc/,6554862ecc9d4.pdf,1,2023-11-15 14:19:50,2023-11-15 14:19:50
+14,3,legal,uploads/compliances/legal/,6554862ecd85e.pdf,1,2023-11-15 14:19:50,2023-11-15 14:19:50

@@ -1,0 +1,175 @@
+    [
+        {
+            "cat" : "residential",
+            "title": "Apartment",
+            "sub_cat" : [
+                    {
+                        "id": 1,
+                        "title": "Stand-alone Apartment",
+                        "primary_details" :  [
+                                    	   {
+                                            	"title" : "Apartment Name",
+                                            	"type" : "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Owner Full Name",
+                                            	"type" :"dropdown",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "House No ",
+                                            	"type" :"text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Plot No ",
+                                            	"type" : "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Street Name/No/Road No",
+                                            	"type" : "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Colony/Locality Name",
+                                            	"type" : "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Contact No",
+                                            	"type" :  "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "No of Floors",
+                                            	"type" :  "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "No of Units per Floor 1",
+                                            	"type" :  "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Unit Name",
+                                            	"type" :  "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            },
+                                            {
+                                            	"title" : "Select Units",
+                                            	"type" : "text",
+                                            	"mandatory" : "no",
+                                            	"className" : "form-control"
+                                            }
+                                    ]
+                    },
+                    {
+                        "title" : "Gated Community",
+                        "primary_details" :  [
+                                        	   {
+                                                	"title" : "Project Name",
+                                                	"type" : "text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "Builder Name",
+                                                	"type" :"dropdown",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "House No ",
+                                                	"type" :"text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "Plot No ",
+                                                	"type" : "text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "Street Name/No/Road No",
+                                                	"type" : "text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "Colony/Locality Name",
+                                                	"type" : "text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                },
+                                                {
+                                                	"title" : "Contact No",
+                                                	"type" :  "text",
+                                                	"mandatory" : "no",
+                                                	"className" : "form-control"
+                                                }
+                                        ],
+                        "secondary_details" :  [
+                        	   {
+                                	"title" : "Project Name",
+                                	"type" : "text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "Builder Name",
+                                	"type" :"dropdown",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "House No ",
+                                	"type" :"text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "Plot No ",
+                                	"type" : "text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "Street Name/No/Road No",
+                                	"type" : "text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "Colony/Locality Name",
+                                	"type" : "text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                },
+                                {
+                                	"title" : "Contact No",
+                                	"type" :  "text",
+                                	"mandatory" : "no",
+                                	"className" : "form-control"
+                                }
+                        ]
+                    }
+                ]
+        },
+        {
+            
+        }
+    
+    ]

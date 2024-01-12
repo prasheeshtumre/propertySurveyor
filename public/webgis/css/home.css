@@ -1,0 +1,123 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body, html {
+    font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+    font-size: 16px;
+}
+
+
+p{
+    /*height: 100%;*/
+}
+.map {
+    /*height: 85%;*/
+    width: 100%;
+    margin: 1px 0;
+    height: calc(100vh - 177px);
+}
+
+.map2 {
+    /*height: 85%;*/
+    width: 100%;
+    margin: 1px 0;
+    height: calc(100vh - 168px);
+}
+
+#box-info-building{
+    position: absolute;
+    top: 60px;
+    right: 225px;
+    width: 950px;
+    height: 600px;
+    visibility: hidden;
+    z-index:1000;
+
+}
+#box-info-open-plot{
+    position: absolute;
+    top: 60px;
+    right: 225px;
+    width: 950px;
+    height: 600px;
+    visibility: hidden;
+    z-index:1000;
+
+}
+#searchbox{
+    position: absolute;
+    top: 155px;
+    left: 125px;
+
+}
+
+#searchbox1{
+    position: absolute;
+    top: 155px;
+    left: 638px;
+
+}
+
+.icon-north{
+    position: absolute;
+    top: 103pt;
+    right: 1pt;
+    z-index: 0;
+
+}
+
+#btnCrosshair {
+    z-index: 2000;
+    position: absolute;
+    right: 10px;
+    bottom: 130px;
+}
+
+.hideOpacity .layerswitcher-opacity
+{	display:none;
+}
+.hideOpacity .ol-layerswitcher .layerup
+{
+    height: 1.5em;
+}
+
+.ol-header > div
+{
+    width:100%;
+}
+.close-button {
+    background-color: #6358eb; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.tbencumbrace{
+    width: 100%;
+    font-size: 8px;
+}
+.mytable{
+    width:20%;
+}
+
+.ui-tabs .ui-tabs-nav li{
+    font-size:12px;
+}
+
+table {
+    font-size:12px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}

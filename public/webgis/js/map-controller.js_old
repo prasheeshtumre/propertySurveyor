@@ -1,0 +1,946 @@
+/**
+ * @author surajit
+ * @param {type} global
+ * @param {type} $
+ * @returns {undefined}
+ */
+(function (global, $) {
+
+    if (!global) {
+
+        throw "App initialization error";
+    }
+
+    if (!ol) {
+
+        throw "Opelayer is not found";
+    }
+
+    if (!$) {
+
+        throw "jQuery is not found";
+    }
+
+
+    var base = {};
+
+    global.mapController = base;
+
+    var fill = new ol.style.Fill({
+        color: 'red'
+    });
+    var stroke = new ol.style.Stroke({
+        color: 'black',
+        width: 3
+    });
+    var square = new ol.style.RegularShape({
+        fill: fill,
+        stroke: stroke,
+        points: 4,
+        radius: 10,
+        angle: Math.PI / 4
+    });
+    var star = new ol.style.RegularShape({
+        fill: fill,
+        stroke: stroke,
+        points: 5,
+        radius: 15,
+        radius2: 4,
+        angle: 0
+    });
+
+
+    var point_style = new ol.style.Style({
+        image: square,
+        fill: fill,
+        stroke: stroke
+    })
+
+    var overlay;
+
+    function initPopup(map) {
+
+        /**
+         * Elements that make up the popup.
+         */
+        var container = document.getElementById('popup');
+
+        var closer = document.getElementById('popup-closer');
+
+
+        /**
+         * Create an overlay to anchor the popup to the map.
+         */
+        overlay = new ol.Overlay({
+            element: container,
+            autoPan: true,
+            autoPanAnimation: {
+                duration: 250
+            }
+        });
+
+
+        /**
+         * Add a click handler to hide the popup.
+         * @return {boolean} Don't follow the href.
+         */
+        closer.onclick = function () {
+            overlay.setPosition(undefined);
+            closer.blur();
+            return false;
+        };
+
+        map.addOverlay(overlay);
+
+    }
+
+    function showPopup(coordinate, data) {
+        var content = document.getElementById('popup-content');
+
+        content.innerHTML = '<p>' + data + '</p>';
+        overlay.setPosition(coordinate);
+    }
+
+    function hidePopup() {
+        overlay.setPosition(undefined);
+    }
+
+
+    var plotsurveyNo = "";
+    var plotplotNo = "";
+    var ploteast = "";
+    var plotwest = "";
+    var plotnorth = "";
+    var plotsouth = "";
+    var MAP_BASE_URL = global.appConfig.geoserverURL;
+    var GWC_URL = MAP_BASE_URL + global.appConfig.urlGWC;
+
+    function init() {
+
+
+        /*
+         * init background layer
+         */
+        //initBackgroundLayers();
+    }
+
+
+    mapLayers = global.layerController.initBackgroundLayers();
+    let nagoldaLayers = global.layerController.initLayers(global.layersData);
+    mapLayers = mapLayers.concat(nagoldaLayers)
+
+    var sourceGeomBuilding = new ol.source.Vector();
+    var geomBuilding = new ol.layer.Vector({
+        title: "Legend",
+        source: sourceGeomBuilding,
+        zIndex: 1
+    });
+
+    mapLayers.push(geomBuilding);
+
+
+    var map = new ol.Map({
+        target: 'map',
+        pixelRatio: 1,
+        view: new ol.View({
+            projection: global.appConfig.mapProjection,
+            center: global.appConfig.defaultCenter,
+            zoom: global.appConfig.defaultZoom,
+            minZoom: global.appConfig.minZoom,
+            maxZoom: global.appConfig.maxZoom
+        }),
+        layers: mapLayers,
+        interactions: olgm.interaction.defaults(),
+        controls: ol.control.defaults().extend
+                ([
+                    new ol.control.LayerSwitcher(),
+                    new ol.control.ZoomSlider(),
+                    new ol.control.OverviewMap({
+                        collapse: false
+                    }),
+                    new ol.control.FullScreen(),
+                    new ol.control.ScaleLine()
+
+                ])
+
+    });
+
+    initPopup(map);
+
+    base.map = map;
+    base.view = map.getView();
+
+
+    var olGM = new olgm.OLGoogleMaps({map: map}); // map is the ol.Map instance
+    olGM.activate();
+
+    var mainbar = new ol.control.Bar();
+    map.addControl(mainbar);
+    var nested = new ol.control.Bar({toggleOne: true, group: true});
+
+    var dragCtrl = new ol.control.Toggle(
+            {html: '<i class="fa fa-hand-pointer-o"></i>',
+                className: "select",
+                title: "Select",
+                interaction: new ol.interaction.DragPan(),
+                active: true
+
+            });
+    nested.addControl(dragCtrl);
+
+    mainbar.setPosition("left")
+    mainbar.addControl(nested);
+    mainbar.addControl(new ol.control.ZoomToExtent({extent: global.appConfig.defaultExtent}));
+    mainbar.addControl(new ol.control.Rotate());
+    mainbar.addControl(new ol.control.FullScreen());
+
+
+    function getFeatureInfo(coor, url) {
+        if (url) {
+
+        } else {
+
+        }
+    }
+
+    var house_no;
+    var gis_id;
+    var assnn_no;
+
+    map.on('singleclick', function (evt) {
+
+        var coor = evt.coordinate;
+
+        var lonlat = ol.proj.transform(evt.coordinate, global.appConfig.mapProjection,
+                global.appConfig.dataProjection);
+
+        var url = "./php/getInfoPoint.php";
+
+        if (url) {
+
+            console.log(url);
+
+            let loadingId = "ajaxLoader" + new Date().getTime();
+            sourceGeomBuilding.clear();
+
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: {
+                    lat: lonlat[1],
+                    long: lonlat[0]
+                },
+                beforeSend: function () {
+
+                    $u.addLoading(loadingId);
+                },
+                success: function (response) {
+                    $u.removeLoading(loadingId);
+
+                    if (response) {
+                        if (response.message instanceof Array && response.message.length) {
+                            var data = response.message[0];
+
+                            var str = "";
+
+                            for (var k in data) {
+
+                                if (k === "geom")
+                                    continue;
+
+                                str += "<p><b>" + k + "</b>" + " : " + data[k] + "</p>"
+
+                            }
+                            var wkt = data.geom;
+                            var format = new ol.format.WKT();
+
+                            var feature = format.readFeature(wkt, {
+                                dataProjection: global.appConfig.dataProjection,
+                                featureProjection: global.appConfig.mapProjection
+                            });
+                            feature.setStyle(point_style);
+
+                            sourceGeomBuilding.addFeature(feature);
+
+                            showPopup(coor, str);
+                        } else {
+
+                            hidePopup();
+                        }
+
+
+                    } else {
+                        hidePopup();
+                    }
+
+                },
+                error: function (response) {
+                    $u.removeLoading(loadingId);
+                    var n = noty({
+                        text: 'Error warning!',
+                        type: 'error',
+                        animation: {
+                            open: {height: 'toggle'},
+                            close: {height: 'toggle'},
+                            easing: 'swing',
+                            speed: 2000 // opening & closing animation speed
+                        }
+                    });
+                    n.close();
+                }
+            });
+        }
+
+
+    });
+
+
+
+    $("#tabs-nei-open").click(function () {
+        var htmlplotneighbours = "";
+        if ($("#tabs-9").html().length > 0)
+            return;
+
+        $("#tabs-9").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+        if ((ploteast != "") && (plotwest != "") && (plotnorth != "") && (plotsouth != ""))
+        {
+            htmlplotneighbours += '<div style="height:450px; overflow:scroll;"><table style="font-size:12px;" border="1" class="tbencumbrace table"';
+            htmlplotneighbours += '<tr><th>East<br/>(తూర్పు)</th>';
+            htmlplotneighbours += '<th>West<br/>(పశ్చిమ)</th>';
+            htmlplotneighbours += '<th>North<br/>(ఉత్తర)</th>';
+            htmlplotneighbours += '<th>South<br/>(దక్షిణ)</th></tr>';
+            if (ploteast != "")
+            {
+                htmlplotneighbours += "<tr><td>" + ploteast + "</td>";
+            } else
+            {
+                htmlplotneighbours += "<tr><td>Record Not found</td>";
+            }
+            if (plotwest != "")
+            {
+                htmlplotneighbours += "<td>" + plotwest + "</td>";
+            } else
+            {
+                htmlplotneighbours += "<tr><td>Record Not found</td>";
+            }
+            if (plotnorth != "")
+            {
+                htmlplotneighbours += "<td>" + plotnorth + "</td>";
+            } else
+            {
+                htmlplotneighbours += "<tr><td>Record Not found</td>";
+            }
+            if (plotsouth != "")
+            {
+                htmlplotneighbours += "<td>" + plotsouth + "</td></tr>";
+            } else
+            {
+                htmlplotneighbours += "<tr><td>Record Not found</td>";
+            }
+
+            htmlplotneighbours += '</table></div>';
+            $("#tabs-9").empty();
+            $("#tabs-9").append(htmlplotneighbours);
+
+
+        } else
+        {
+            htmlplotneighbours += '<div style="height:450px; overflow:scroll;">No data fetched for the door number</div> ';
+            htmlplotneighbours += '</table></div>';
+            $("#tabs-9").empty();
+            $("#tabs-9").append(htmlplotneighbours);
+        }
+    });
+
+
+
+
+    $("#tabs-enc-open").click(function () {
+        var htmlplotEncumbrace = "";
+        if ($("#tabs-10").html().length > 0)
+            return;
+
+        $("#tabs-10").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+        var urlDestination = "php/getplotMutationServices.php";
+
+        $u.ajaxRequest('GET', urlDestination, "surveyNo=" + plotsurveyNo + "&plotNo=" + plotplotNo,
+                function (response) {
+
+                    if (response.message.EODB1 && response.message.EODB1[0].length > 1) {
+
+                        htmlplotEncumbrace += '<div style="height:450px; overflow:scroll;"><table style="font-size:12px;" border="1" class="tbencumbrace table"';
+                        htmlplotEncumbrace += '<tr><th>Sl.No<br/>(క్ర. సం)</th>';
+                        htmlplotEncumbrace += '<th>Description of property<br/>(స్థిరాస్తి వివరాలు)</th>';
+                        htmlplotEncumbrace += '<th>Exe.Date<br/>(అమలు తేదీ)</th>';
+                        htmlplotEncumbrace += '<th>Nature & Mkt.Value Con. Value<br/>(విధము & విపణి విలువ, పరిగణింప బడిన విలువ)</th>';
+                        htmlplotEncumbrace += '<th>Name of Parties Executant(EX) & Claimants(CL)<br/>(ఇచ్చు (EX) మరియు పొందు (CL) వారి వివరాలు)</th>';
+                        htmlplotEncumbrace += '<th>Vol/Pg No CD No Doct No/Year [ScheduleNo]<br/>(పేజీ/క్రమ లేదా జాబితా సంఖ్య/సంవత్సరం)</th>';
+
+                        var j = 1;
+                        for (i = 0; i < response.message.EODB1[0].length - 1; i++) {
+                            var data = response.message.EODB1[0][i];
+                            htmlplotEncumbrace += "<tr><td>" + j + "</td>";
+                            htmlplotEncumbrace += "<td class='mytable'>" + data.village + " " + data.propertyDetails + "Link Doct:" + data.ldoctNo + "/" + data.lregYr + "of SRO " + data.t_sro + "</td>";
+
+                            htmlplotEncumbrace += "<td>" + data.execdate + "</td>";
+                            htmlplotEncumbrace += "<td>" + data.transcode + "" + data.transdesc + "" + data.marketRate + "" + data.considerationValue + "</td>";
+                            htmlplotEncumbrace += "<td>" + data.partyNames + "</td>";
+                            htmlplotEncumbrace += "<td>0/0" + data.cdNo + "" + data.t_doct + "/" + data.t_regyr + "[" + data.t_sch + "] of SRO" + data.srName + "(" + data.t_sro + "</td></tr>";
+
+                            j++;
+
+                        }
+
+                        htmlplotEncumbrace += '</table></div>';
+                        $("#tabs-10").empty();
+                        $("#tabs-10").append(htmlplotEncumbrace);
+
+
+                    } else
+                    {
+                        htmlplotEncumbrace += '<div style="height:450px; overflow:scroll;">No data fetched for the door number</div> ';
+                        htmlplotEncumbrace += '</table></div>';
+                        $("#tabs-10").empty();
+                        $("#tabs-10").append(htmlplotEncumbrace);
+                    }
+
+
+
+
+
+                },
+                function () {
+
+                    var n = noty({
+                        text: 'Error warning!',
+                        type: 'error',
+                        animation: {
+                            open: {height: 'toggle'},
+                            close: {height: 'toggle'},
+                            easing: 'swing',
+                            speed: 2000 // opening & closing animation speed
+                        }
+                    });
+                    n.close();
+                }
+
+        );
+
+//        $.ajax({
+//            type: 'GET',
+//            url: urlDestination,
+//            data: "surveyNo=" + plotsurveyNo + "&plotNo=" + plotplotNo,
+//            success: ,
+//            error: 
+//        });
+
+    });
+
+
+    $(function () {
+        $("#floor_accordion").accordion();
+        $("#dispute_accordion").accordion();
+        $("#prohib_accordion").accordion();
+        $("#tabs").tabs();
+        $("#tabs-open-plot").tabs();
+        $(".close-button").click(function () {
+            $("#box-info-building").css("visibility", "hidden");
+            $("#box-info-open-plot").css("visibility", "hidden");
+        });
+
+        $("#tabs-2").click(function () {
+            $("#floor_accordion").accordion("refresh");
+        });
+        $("#tabs-3").click(function () {
+            $("#dispute_accordion").accordion("refresh");
+        });
+        $("#tabs-6").click(function () {
+            $("#prohib_accordion").accordion("refresh");
+        });
+
+
+        $("#tabs-enc").click(function () {
+            var htmlEncumbrace = "";
+            if ($("#tabs-4").html().length > 0)
+                return;
+
+            $("#tabs-4").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            var urlDestination = "php/getMutationServices.php";
+
+            $u.ajaxRequest('GET', urlDestination, "house_no=" + house_no, function (response) {
+
+                if (response.message.EODB1 && response.message.EODB1[0].length > 1) {
+
+                    htmlEncumbrace += '<div style="height:450px; overflow:scroll;"><table style="font-size:12px;" border="1" class="tbencumbrace table"';
+                    htmlEncumbrace += '<tr><th>Sl.No<br/>(క్ర. సం)</th>';
+                    htmlEncumbrace += '<th>Description of property<br/>(స్థిరాస్తి వివరాలు)</th>';
+                    htmlEncumbrace += '<th>Exe.Date<br/>(అమలు తేదీ)</th>';
+                    htmlEncumbrace += '<th>Nature & Mkt.Value Con. Value<br/>(విధము & విపణి విలువ, పరిగణింప బడిన విలువ)</th>';
+                    htmlEncumbrace += '<th>Name of Parties Executant(EX) & Claimants(CL)<br/>(ఇచ్చు (EX) మరియు పొందు (CL) వారి వివరాలు)</th>';
+                    htmlEncumbrace += '<th>Vol/Pg No CD No Doct No/Year [ScheduleNo]<br/>(పేజీ/క్రమ లేదా జాబితా సంఖ్య/సంవత్సరం)</th>';
+
+                    var j = 1;
+                    for (i = 0; i < response.message.EODB1[0].length - 1; i++) {
+                        var data = response.message.EODB1[0][i];
+                        htmlEncumbrace += "<tr><td>" + j + "</td>";
+                        htmlEncumbrace += "<td class='mytable'>" + data.village + " " + data.propertyDetails + "Link Doct:" + data.ldoctNo + "/" + data.lregYr + "of SRO " + data.t_sro + "</td>";
+
+                        htmlEncumbrace += "<td>" + data.execdate + "</td>";
+                        htmlEncumbrace += "<td>" + data.transcode + "" + data.transdesc + "" + data.marketRate + "" + data.considerationValue + "</td>";
+                        htmlEncumbrace += "<td>" + data.partyNames + "</td>";
+                        htmlEncumbrace += "<td>0/0" + data.cdNo + "" + data.t_doct + "/" + data.t_regyr + "[" + data.t_sch + "] of SRO" + data.srName + "(" + data.t_sro + "</td></tr>";
+
+                        j++;
+
+                    }
+
+                    htmlEncumbrace += '</table></div>';
+                    $("#tabs-4").empty();
+                    $("#tabs-4").append(htmlEncumbrace);
+
+
+                } else
+                {
+                    htmlEncumbrace += '<div style="height:450px; overflow:scroll;">No data fetched for the door number</div> ';
+                    htmlEncumbrace += '</table></div>';
+                    $("#tabs-4").empty();
+                    $("#tabs-4").append(htmlEncumbrace);
+                }
+
+
+
+
+
+            }, function () {
+                var n = noty({
+                    text: 'Error warning!',
+                    type: 'error',
+                    animation: {
+                        open: {height: 'toggle'},
+                        close: {height: 'toggle'},
+                        easing: 'swing',
+                        speed: 2000 // opening & closing animation speed
+                    }
+                });
+                n.close();
+            })
+
+//            $.ajax({
+//                type: 'GET',
+//                url: urlDestination,
+//                data: "house_no=" + house_no,
+//                success: ,
+//                error: 
+//            });
+
+        });
+
+        $("#tabs-nei").click(function () {
+
+            if ($("#tab1primary").html().length > 0)
+                return;
+            var htmlEncumbrace = "";
+
+            $("#tab1primary").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            $("#tab2primary").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            $("#tab3primary").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            $("#tab4primary").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            var urlDestination = "php/getNeighborBuilding.php";
+
+            $u.ajaxRequest('GET', urlDestination, "gis_id=" + gis_id, function (response) {
+
+                if (response.status) {
+                    var nei_style = new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'orange',
+                            lineDash: [4],
+                            width: 4
+                        })
+                    })
+                    var htmlNorthBuilding = "";
+                    var htmlEastBuilding = "";
+                    var htmlSouthBuilding = "";
+                    var htmlWestBuilding = "";
+                    if ($.trim(response.message.north_building)) {
+
+                        var summarydata = response.message.north_building;
+                        htmlNorthBuilding += '<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table"><tr>';
+                        htmlNorthBuilding += '<td width="70%" align="left" valign="top">';
+                        htmlNorthBuilding += '<table class="table" width="100%" border="1" cellspacing="0" cellpadding="0" style="font-size:13px;">';
+                        htmlNorthBuilding += '<tr style="background-color:#6dcff6;">';
+                        htmlNorthBuilding += '<td colspan="4"><strong style="color:#9e0b0f;">GIS ID :' + summarydata.gis_id + '</strong></td></tr>';
+                        htmlNorthBuilding += '<tr><td width="28%">Owner Surname<br/>(యజమాని ఇంటిపేరు)</td><td width="25%"><strong>' + summarydata.surname_owner + '</strong></td><td width="27%">House No/Plot No<br/>(ఇంటి నెం.)</td><td width="20%">' + summarydata.door_no + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td height="25">Owner Name<br/>(యజమాని పేరు)</td><td><strong>' + summarydata.name_owner + '</strong></td><td>Property Tax No<br/>(పన్ను సంఖ్య)</td><td>' + summarydata.property_tax_no + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td>Father Surname<br/>(తండ్రి ఇంటిపేరు)</td><td>' + summarydata.fsurname_owner + '</td><td>Street<br/>(వీధి)</td><td>' + summarydata.street + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td>Father Name<br/>(తండ్రి పేరు)</td><td>' + summarydata.fname_owner + '</td><td>Election Ward No<br/>(వార్డు సంఖ్య)</td><td>' + summarydata.elec_ward_no + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td>Mobile Number<br/>(మొబైల్ నెంబర్)</td><td>' + summarydata.mobile_owner + '</td><td>Number of Floors<br/>(అంతస్తులు)</td><td>' + summarydata.no_floors + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td>Aadhaar Number<br/>(ఆధార్ నెంబర్)</td><td>' + summarydata.aadhar_owner + '</td><td>Category<br/>(రకము)</td><td>' + summarydata.type_category + '</td></tr>';
+                        htmlNorthBuilding += '<tr><td>Gender<br/>(లింగం)</td><td>' + summarydata.gender + '</td><td>Is tap available<br/>(నల్లా కనెక్షన్ కలిగి ఉన్నారా?)</td><td>' + summarydata.istap_available + '</td></tr>';
+                        htmlNorthBuilding += '<td width="10%" align="center" valign="middle"><img src="' + summarydata.survey_pic + '"alt="Mountain View" style="width:200px;height:150px;" /></td></tr></table>';
+
+                        var wkt = summarydata.geom;
+                        var format = new ol.format.WKT();
+                        var feature = format.readFeature(wkt, {
+                            dataProjection: 'EPSG:4326',
+                            featureProjection: 'EPSG:3857'
+                        });
+                        feature.setStyle(nei_style);
+                        sourceGeomBuilding.addFeature(feature);
+
+                        $("#tab1primary").empty();
+                        $("#tab1primary").append(htmlNorthBuilding);
+                    } else {
+                        htmlNorthBuilding += '<div style="height:450px; overflow:scroll;">No data</div> ';
+                        htmlNorthBuilding += '</table></div>';
+                        $("#tab1primary").empty();
+                        $("#tab1primary").append(htmlNorthBuilding);
+
+                    }
+
+                    if ($.trim(response.message.east_building)) {
+
+                        var summarydata = response.message.east_building;
+                        htmlEastBuilding += '<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table"><tr>';
+                        htmlEastBuilding += '<td width="70%" align="left" valign="top">';
+                        htmlEastBuilding += '<table class="table" width="100%" border="1" cellspacing="0" cellpadding="0" style="font-size:13px;">';
+                        htmlEastBuilding += '<tr style="background-color:#6dcff6;">';
+                        htmlEastBuilding += '<td colspan="4"><strong style="color:#9e0b0f;">GIS ID :' + summarydata.gis_id + '</strong></td></tr>';
+                        htmlEastBuilding += '<tr><td width="28%">Owner Surname<br/>(యజమాని ఇంటిపేరు)</td><td width="25%"><strong>' + summarydata.surname_owner + '</strong></td><td width="27%">House No/Plot No<br/>(ఇంటి నెం.)</td><td width="20%">' + summarydata.door_no + '</td></tr>';
+                        htmlEastBuilding += '<tr><td height="25">Owner Name<br/>(యజమాని పేరు)</td><td><strong>' + summarydata.name_owner + '</strong></td><td>Property Tax No<br/>(పన్ను సంఖ్య)</td><td>' + summarydata.property_tax_no + '</td></tr>';
+                        htmlEastBuilding += '<tr><td>Father Surname<br/>(తండ్రి ఇంటిపేరు)</td><td>' + summarydata.fsurname_owner + '</td><td>Street<br/>(వీధి)</td><td>' + summarydata.street + '</td></tr>';
+                        htmlEastBuilding += '<tr><td>Father Name<br/>(తండ్రి పేరు)</td><td>' + summarydata.fname_owner + '</td><td>Election Ward No<br/>(వార్డు సంఖ్య)</td><td>' + summarydata.elec_ward_no + '</td></tr>';
+                        htmlEastBuilding += '<tr><td>Mobile Number<br/>(మొబైల్ నెంబర్)</td><td>' + summarydata.mobile_owner + '</td><td>Number of Floors<br/>(అంతస్తులు)</td><td>' + summarydata.no_floors + '</td></tr>';
+                        htmlEastBuilding += '<tr><td>Aadhaar Number<br/>(ఆధార్ నెంబర్)</td><td>' + summarydata.aadhar_owner + '</td><td>Category<br/>(రకము)</td><td>' + summarydata.type_category + '</td></tr>';
+                        htmlEastBuilding += '<tr><td>Gender<br/>(లింగం)</td><td>' + summarydata.gender + '</td><td>Is tap available<br/>(నల్లా కనెక్షన్ కలిగి ఉన్నారా?)</td><td>' + summarydata.istap_available + '</td></tr>';
+                        htmlEastBuilding += '<td width="10%" align="center" valign="middle"><img src="' + summarydata.survey_pic + '"alt="Mountain View" style="width:200px;height:150px;" /></td></tr></table>';
+
+                        var wkt = summarydata.geom;
+                        var format = new ol.format.WKT();
+                        var feature = format.readFeature(wkt, {
+                            dataProjection: 'EPSG:4326',
+                            featureProjection: 'EPSG:3857'
+                        });
+                        feature.setStyle(nei_style);
+                        sourceGeomBuilding.addFeature(feature);
+
+                        $("#tab2primary").empty();
+                        $("#tab2primary").append(htmlEastBuilding);
+                    } else
+                    {
+                        htmlEastBuilding += '<div style="height:450px; overflow:scroll;">No data</div> ';
+                        htmlEastBuilding += '</table></div>';
+                        $("#tab2primary").empty();
+                        $("#tab2primary").append(htmlEastBuilding);
+
+                    }
+
+
+                    if ($.trim(response.message.south_building)) {
+
+                        var summarydata = response.message.south_building;
+                        htmlSouthBuilding += '<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table"><tr>';
+                        htmlSouthBuilding += '<td width="70%" align="left" valign="top">';
+                        htmlSouthBuilding += '<table class="table" width="100%" border="1" cellspacing="0" cellpadding="0" style="font-size:13px;">';
+                        htmlSouthBuilding += '<tr style="background-color:#6dcff6;">';
+                        htmlSouthBuilding += '<td colspan="4"><strong style="color:#9e0b0f;">GIS ID :' + summarydata.gis_id + '</strong></td></tr>';
+                        htmlSouthBuilding += '<tr><td width="28%">Owner Surname<br/>(యజమాని ఇంటిపేరు)</td><td width="25%"><strong>' + summarydata.surname_owner + '</strong></td><td width="27%">House No/Plot No<br/>(ఇంటి నెం.)</td><td width="20%">' + summarydata.door_no + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td height="25">Owner Name<br/>(యజమాని పేరు)</td><td><strong>' + summarydata.name_owner + '</strong></td><td>Property Tax No<br/>(పన్ను సంఖ్య)</td><td>' + summarydata.property_tax_no + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td>Father Surname<br/>(తండ్రి ఇంటిపేరు)</td><td>' + summarydata.fsurname_owner + '</td><td>Street<br/>(వీధి)</td><td>' + summarydata.street + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td>Father Name<br/>(తండ్రి పేరు)</td><td>' + summarydata.fname_owner + '</td><td>Election Ward No<br/>(వార్డు సంఖ్య)</td><td>' + summarydata.elec_ward_no + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td>Mobile Number<br/>(మొబైల్ నెంబర్)</td><td>' + summarydata.mobile_owner + '</td><td>Number of Floors<br/>(అంతస్తులు)</td><td>' + summarydata.no_floors + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td>Aadhaar Number<br/>(ఆధార్ నెంబర్)</td><td>' + summarydata.aadhar_owner + '</td><td>Category<br/>(రకము)</td><td>' + summarydata.type_category + '</td></tr>';
+                        htmlSouthBuilding += '<tr><td>Gender<br/>(లింగం)</td><td>' + summarydata.gender + '</td><td>Is tap available<br/>(నల్లా కనెక్షన్ కలిగి ఉన్నారా?)</td><td>' + summarydata.istap_available + '</td></tr>';
+                        htmlSouthBuilding += '<td width="10%" align="center" valign="middle"><img src="' + summarydata.survey_pic + '"alt="Mountain View" style="width:200px;height:150px;" /></td></tr></table>';
+
+                        var wkt = summarydata.geom;
+                        var format = new ol.format.WKT();
+                        var feature = format.readFeature(wkt, {
+                            dataProjection: 'EPSG:4326',
+                            featureProjection: 'EPSG:3857'
+                        });
+                        feature.setStyle(nei_style);
+                        sourceGeomBuilding.addFeature(feature);
+                        $("#tab3primary").empty();
+                        $("#tab3primary").append(htmlSouthBuilding);
+                    } else
+                    {
+                        htmlSouthBuilding += '<div style="height:450px; overflow:scroll;">No data</div> ';
+                        htmlSouthBuilding += '</table></div>';
+                        $("#tab3primary").empty();
+                        $("#tab3primary").append(htmlSouthBuilding);
+                    }
+                    if ($.trim(response.message.west_building)) {
+
+                        var summarydata = response.message.west_building;
+                        htmlWestBuilding += '<table width="100%" border="1" cellspacing="0" cellpadding="0" class="table"><tr>';
+                        htmlWestBuilding += '<td width="70%" align="left" valign="top">';
+                        htmlWestBuilding += '<table class="table" width="100%" border="1" cellspacing="0" cellpadding="0" style="font-size:13px;">';
+                        htmlWestBuilding += '<tr style="background-color:#6dcff6;">';
+                        htmlWestBuilding += '<td colspan="4"><strong style="color:#9e0b0f;">GIS ID :' + summarydata.gis_id + '</strong></td></tr>';
+                        htmlWestBuilding += '<tr><td width="28%">Owner Surname<br/>(యజమాని ఇంటిపేరు)</td><td width="25%"><strong>' + summarydata.surname_owner + '</strong></td><td width="27%">House No/Plot No<br/>(ఇంటి నెం.)</td><td width="20%">' + summarydata.door_no + '</td></tr>';
+                        htmlWestBuilding += '<tr><td height="25">Owner Name<br/>(యజమాని పేరు)</td><td><strong>' + summarydata.name_owner + '</strong></td><td>Property Tax No<br/>(పన్ను సంఖ్య)</td><td>' + summarydata.property_tax_no + '</td></tr>';
+                        htmlWestBuilding += '<tr><td>Father Surname<br/>(తండ్రి ఇంటిపేరు)</td><td>' + summarydata.fsurname_owner + '</td><td>Street<br/>(వీధి)</td><td>' + summarydata.street + '</td></tr>';
+                        htmlWestBuilding += '<tr><td>Father Name<br/>(తండ్రి పేరు)</td><td>' + summarydata.fname_owner + '</td><td>Election Ward No<br/>(వార్డు సంఖ్య)</td><td>' + summarydata.elec_ward_no + '</td></tr>';
+                        htmlWestBuilding += '<tr><td>Mobile Number<br/>(మొబైల్ నెంబర్)</td><td>' + summarydata.mobile_owner + '</td><td>Number of Floors<br/>(అంతస్తులు)</td><td>' + summarydata.no_floors + '</td></tr>';
+                        htmlWestBuilding += '<tr><td>Aadhaar Number<br/>(ఆధార్ నెంబర్)</td><td>' + summarydata.aadhar_owner + '</td><td>Category<br/>(రకము)</td><td>' + summarydata.type_category + '</td></tr>';
+                        htmlWestBuilding += '<tr><td>Gender<br/>(లింగం)</td><td>' + summarydata.gender + '</td><td>Is tap available<br/>(నల్లా కనెక్షన్ కలిగి ఉన్నారా?)</td><td>' + summarydata.istap_available + '</td></tr>';
+                        htmlWestBuilding += '<td width="10%" align="center" valign="middle"><img src="' + summarydata.survey_pic + '"alt="Mountain View" style="width:200px;height:150px;" /></td></tr></table>';
+                        var wkt = summarydata.geom;
+                        var format = new ol.format.WKT();
+                        var feature = format.readFeature(wkt, {
+                            dataProjection: 'EPSG:4326',
+                            featureProjection: 'EPSG:3857'
+                        });
+
+                        feature.setStyle(nei_style);
+                        sourceGeomBuilding.addFeature(feature);
+                        $("#tab4primary").empty();
+                        $("#tab4primary").append(htmlWestBuilding);
+                    } else
+                    {
+                        htmlWestBuilding += '<div style="height:450px; overflow:scroll;">No data</div> ';
+                        htmlWestBuilding += '</table></div>';
+                        $("#tab4primary").empty();
+                        $("#tab4primary").append(htmlWestBuilding);
+                    }
+
+
+                }
+
+            }, function () {
+                var n = noty({
+                    text: 'Error warning!',
+                    type: 'error',
+                    animation: {
+                        open: {height: 'toggle'},
+                        close: {height: 'toggle'},
+                        easing: 'swing',
+                        speed: 2000 // opening & closing animation speed
+                    }
+                });
+                n.close();
+            })
+
+
+//            $.ajax({
+//                type: 'GET',
+//                url: urlDestination,
+//                data: "gis_id=" + gis_id,
+//                success: ,
+//                error: 
+//            });
+
+        });
+
+
+
+
+        $("#tabs-tax").click(function () {
+            var htmltax = "";
+            if ($("#tabs-5").html().length > 0)
+                return;
+
+            $("#tabs-5").append('<div style="height:450px; overflow:scroll;">Please wait....</div> ')
+            var urlDestination = "php/gettaxdetails.php";
+            if (assnn_no != '')
+            {
+                if (!isNaN(assnn_no))
+                {
+
+                    $u.ajaxRequest('GET', urlDestination, "assessmentNo=" + assnn_no, function (response) {
+                        var asg = response;
+                        $("#tabs-5").empty();
+                        $("#tabs-5").append(asg);
+                    }, function () {
+                        var n = noty({
+                            text: 'Error warning!',
+                            type: 'error',
+                            animation: {
+                                open: {height: 'toggle'},
+                                close: {height: 'toggle'},
+                                easing: 'swing',
+                                speed: 2000 // opening & closing animation speed
+                            }
+                        });
+                        n.close();
+                    });
+
+//                    $.ajax({
+//                        type: 'GET',
+//                        url: urlDestination,
+//                        data: "assessmentNo=" + assnn_no,
+//                        success: function (response) {
+//
+//
+//
+//
+//
+//                        },
+//                        error: 
+//                    });
+                } else
+                {
+                    var msg = 'Invailid Assessment number';
+                    $("#tabs-5").empty();
+                    $("#tabs-5").append(msg);
+                }
+            } else
+            {
+                var msg = 'Assessment number not found';
+                $("#tabs-5").empty();
+                $("#tabs-5").append(msg);
+            }
+
+        });
+
+
+
+
+
+        $(".form-control").change(function () {
+
+            $("#searchInput").attr("placeholder", "Search for " + $(".form-control option:selected").text());
+        });
+
+        $("#btnSearch").click(function () {
+            searchFeature();
+        });
+
+        $('#searchInput').keypress(function (event) {
+
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                searchFeature();
+            }
+
+        });
+
+
+
+        function searchFeature() {
+            //var searchText = $("#searchInput").val();
+            //var searchText2 = $("#searchInput2").val();
+            //var filter = $(".form-control option:selected").val();
+            //var filter1 = $(".secondselect option:selected").val();
+
+            var assessment_no = $("#assessment_no").val();
+            var house_no = $("#house_no").val();
+            var mobile_no = $("#mobile_no").val();
+            var aadhar_no = $("#aadhar_no").val();
+            var usage_type = $("#usage_type").val();
+            var rev_ward_no = $("#rev_ward_no").val();
+            var block_no = $("#block_no").val();
+            var properties = $("#properties").val();
+            var zone_no = $("#zone_no").val();
+            var locality = $("#locality").val();
+
+            var floor_no = $("#floor_no").val();
+            var ownership_type = $("#ownership_type").val();
+            var ownername = $("#ownername").val();
+            var occupation = $("#occupation").val();
+            var property_tax = $("#property_tax").val();
+
+
+
+
+            var urlDestination = 'php/getSearchedFeature.php';
+            sourceGeomBuilding.clear();
+
+            var postData = {
+                assessment_no: assessment_no,
+                house_no: house_no,
+                mobile_no: mobile_no,
+                aadhar_no: aadhar_no,
+                usage_type: usage_type,
+                rev_ward_no: rev_ward_no,
+                block_no: block_no,
+                properties: properties,
+                zone_no: zone_no,
+                locality: locality,
+                floor_no: floor_no,
+                ownership_type: ownership_type,
+                ownername: ownername,
+                occupation: occupation,
+                property_tax: property_tax
+            }
+
+            //$u.ajaxRequest('GET', urlDestination,"search='" + searchText + "'&code='" + filter + "'", function (response) {
+            $u.ajaxRequest('GET', urlDestination,
+                    postData, function (response) {
+                        if (Array.isArray(response.message)) {
+
+                            var fids = [];
+                            for (i = 0; i < response.message.length; i++) {
+                                var wkt = response.message[i].geom;
+                                var format = new ol.format.WKT();
+
+                                fids.push(response.message[i].id);
+
+                                var feature = format.readFeature(wkt, {
+                                    dataProjection: 'EPSG:4326',
+                                    featureProjection: global.appConfig.mapProjection
+                                });
+                                //feature.setStyle(point_style);
+
+                                sourceGeomBuilding.addFeature(feature);
+                            }                            
+                            map.getView().fit(sourceGeomBuilding.getExtent(), map.getSize());
+                            
+                            sourceGeomBuilding.clear();
+                            console.log("IN(" + fids + ")");
+                            
+                            
+                            
+                            if (fids.length > 0) {
+                                global.layerController.updateParams("sircilla:webgis_sircilla_mst", {
+                                    CQL_FILTER: "id IN(" + fids + ")"
+                                })
+                            }
+
+
+
+                        } else {
+                            var n = noty({
+                                text: 'No result!',
+                                type: 'notification',
+                                layout: 'center',
+                                animation: {
+                                    open: {height: 'toggle'},
+                                    close: {height: 'toggle'},
+                                    easing: 'swing',
+                                    speed: 2000 // opening & closing animation speed
+                                }
+                            });
+                            n.close();
+                        }
+                    }, function () {
+                var n = noty({
+                    text: 'Error warning!',
+                    type: 'error',
+                    layout: 'center',
+                    animation: {
+                        open: {height: 'toggle'},
+                        close: {height: 'toggle'},
+                        easing: 'swing',
+                        speed: 2000 // opening & closing animation speed
+                    }
+                });
+                n.close();
+            })
+
+//            $.ajax({
+//                type: 'GET',
+//                url: urlDestination,
+//                data: "search='" + searchText + "'&code='" + filter + "'",
+//                success: ,
+//                error: 
+//            });
+        }
+
+    });
+
+
+
+
+})(window.GISApp, jQuery)
+

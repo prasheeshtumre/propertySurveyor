@@ -1,0 +1,4 @@
+id, property_id, gis_id, cat_id, residential_type, residential_sub_type, ghmc_radio, comm_certifi_radio, rear_number, hdma_number, created_by, created_at, updated_at
+1,88,3,2,8,12,1,1,2345,3456,1,2023-11-03 12:08:44,2023-11-03 12:08:44
+2,110,8526/2,2,7,10,1,1,23456,234567u,1,2023-11-11 15:52:56,2023-11-11 15:52:56
+3,120,9052,1,0,0,1,1,,,1,2023-11-15 14:19:50,2023-11-15 14:19:50
